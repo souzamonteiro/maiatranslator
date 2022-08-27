@@ -1,2 +1,2 @@
-# maiatranslator
-MayaScript translation engine
+# MaiaTranslator
+MaiaScript translation engine.
