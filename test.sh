@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#
+# Simple tests.
+#

@@ -1,0 +1,26 @@
+{
+  "name": "maiatranslator",
+  "version": "1.0.0",
+  "description": "MaiaScript translation engine.",
+  "keywords": [
+    "maia",
+    "maiascript",
+    "scientific computing",
+    "artificial intelligence",
+    "translation"
+],
+"main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souzamonteiro/maiatranslator.git"
+  },
+  "author": "Roberto Luiz Souza Monteiro",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/souzamonteiro/maiatranslator/issues"
+  },
+  "homepage": "https://github.com/souzamonteiro/maiatranslator#readme"
+}
