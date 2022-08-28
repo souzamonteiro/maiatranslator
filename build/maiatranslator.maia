@@ -55,14 +55,14 @@ namespace maiatranslator {
             // Command line options.
             inputFile = ""
             outputFile = ""
-            source = "en_US"
-            target = "pt_BR"
+            source = "en"
+            target = "pt"
             
             // Get command line arguments.
             if (system.argc > 1) {
                 i = 1
                 while (i < system.argc) {
-                    if ((system.argv[i] == "-h") | (system.argv[i] == "--help")) {
+                    if ((system.argv[i] == "-h") || (system.argv[i] == "--help")) {
                         system.log(maiatranslator.appTitle + " Command Line Interface (CLI)")
                         system.log("Usage: " + maiatranslator.appName + " [options] [input file] [--] [arguments]")
                         system.log("Options:")
@@ -112,11 +112,27 @@ namespace maiatranslator {
                             fileExtension = file.split(".")
                             fileExtension = fileExtension.pop()
 
-                            
+                            if (outputFile == "") {
+                                outputFile = fileName + "-" + target + "." + fileExtension
+                            }
+
+                            function onData(data) {
+                                buffer := Buffer.from(data)
+                                system.log(buffer.toString("utf8"))
+                            }
+                            function onClose(data) {
+                                system.log("File '" + file + "' processed.")
+                            }
+
+                            childProcess = system.require("child_process")
+                            python3 = childProcess.spawn("python3", [filePath + "/bin/translator.py", "-i", file, "-o", outputFile, "--source", source, "--target", target])
+                            python3.stdout.on("data", onData)
+                            python3.stderr.on("data", onData)
+                            python3.on("close", onClose)
                         }
                     }
                 }
-
+                
                 options = []
 
                 // Get all file names based on glob pattern.
